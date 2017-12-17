@@ -11,4 +11,36 @@ main {
   color: #fff;
   font-size: 16px;
 }
+.el-breadcrumb__inner {
+  font-weight: 400;
+  color: #888;
+}
+.el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+  color: #000;
+}
+.btns {
+  float: left;
+}
+.btns i {
+  font-weight: 600;
+  font-size: 14px;
+}
+.list_table .has-gutter tr {
+  background-color: #eef1f6;
+  color: #000;
+}
+.list_table .el-table__row .el-table_1_column_2 {
+  font-size: 12px;
+}
+.list_table .el-table__row a {
+  color: #2a72c5;
+  text-decoration: none;
+}
+[class^=el-icon-] {
+  color: rgba(0, 0, 0, 0.3);
+}
+[class^=el-icon-].active {
+  color: #000000;
+}
 /*# sourceMappingURL=./index.css.map */

@@ -55,7 +55,7 @@
     }
     
     .el-main {
-        background-color: #E9EEF3;
+        background-color: #fff;
         color: #333;
     }
 </style>

@@ -1,7 +1,7 @@
 <template>
         <el-dropdown @command="handleCommand">
             <span class="el-dropdown-link">
-                你好，{{user.uname}}
+                你好，{{user.uname}}<i class="el-icon-caret-bottom"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>修改密码</el-dropdown-item>
