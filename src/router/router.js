@@ -1,5 +1,6 @@
-import HomeComponent from "../component/Home.vue";
-import LoginComponent from "../component/login.vue";
+import HomeComponent from "../component/home/Home.vue";
+import LoginComponent from "../component/login/login.vue";
+import AdminComponent from '../component/admin/Admin.vue';
 
 // 导出路由配置
 export default {

@@ -1,6 +1,5 @@
 const path = require("path");
 const htmlWP = require("html-webpack-plugin");
-const cleanWebpackPlugin = require("clean-webpack-plugin")
 
 module.exports = {
 
@@ -10,7 +9,8 @@ module.exports = {
     // 输出
     output: {
         path: path.resolve(__dirname, "./dist"),
-        filename: "bundle_[chunkhash:8].js"
+        // filename: "bundle_[chunkhash:8].js"
+        filename: "bundle.js"
     },
 
     // 插件配置
@@ -19,10 +19,7 @@ module.exports = {
             template: path.resolve(__dirname, "./src/index.html"),
             filename: "index.html",
             inject: "body"     //自动注入body
-        }),
-        
-        // 每次打包前先清除dist目录
-        new cleanWebpackPlugin(['./dist'])
+        })   
     ],
 
     module: {
@@ -31,16 +28,16 @@ module.exports = {
 
             // 打包css
             test: /\.css$/,
-            use: [ 'style-loader', 'css-style' ]
+            use: [ 'style-loader', 'css-loader' ]
             },
 
             // 打包url
             {
-                test: /\.(png|jpg|jpeg|svg|gif)$/,
+                test: /\.(gif|png|jpg|svg|mp3|mp4|avi|woff|ttf)$/,
                 use: [
                     {
                         loader: 'url-loader',
-                        options: {limit: 10240}
+                        options: { limit: 10240 }
                     }
                 ]
             },
@@ -69,10 +66,8 @@ module.exports = {
 
      // webpack-dev-server工具配置
     devServer: {
-        contentBase: 'dist',
-        port: 8888,
-        open: true,
-        inline: true,
-        progress: true,
+        open: true,         // 服务启动后自动打开浏览器
+        port: 8888,         // 服务端口
+        contentBase: 'dist' // 开启服务的目录
     }
 }
