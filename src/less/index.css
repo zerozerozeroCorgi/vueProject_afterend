@@ -3,4 +3,12 @@ body,
 main {
   height: 100%;
 }
+.router-link-active {
+  text-decoration: none;
+  color: #e9eef3;
+}
+.el-submenu__title i {
+  color: #fff;
+  font-size: 16px;
+}
 /*# sourceMappingURL=./index.css.map */

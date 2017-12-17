@@ -48,11 +48,22 @@
             };
         },
         methods: {
+            login() {
+                this.$http.post(this.$api.login, this.user)
+                        .then(res => {
+                            let {status, message} = res.data;
+                            if (status == 0) {
+                                localStorage.setItem("user", JSON.stringify(message));
+                                this.$router.push("/");
+                            } else {
+                                alert(message);
+                            }
+                        });
+            },
             submitForm(formName) {
                 this.$refs[formName].validate((vali) => {
                     if (vali) {
-                        this.$http.post(this.$api.login, this.user)
-                            .then(res => alert(res.data.message.realname));
+                       this.login();
                     } else {
                         alert("别乱点！！！");
                     }
