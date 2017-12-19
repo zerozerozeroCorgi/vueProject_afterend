@@ -26,14 +26,16 @@
                 <el-table-column type="selection">
                 </el-table-column>
                 <img src="" alt="">
-                <el-table-column label="商品标题" ref="id">
+                <el-table-column label="商品标题">
                     <template slot-scope="scope">
                         <el-tooltip placement="right">
                             <div slot="content">商品货号:{{scope.row.goods_no}}<br/>
                                 交易积分:{{scope.row.point}}<br/>
                                 图片:<br/>
-                                <img width="180" height="150" :src="scope.row.imgurl" alt=""></div>
-                            <a href="javascript:;" @click="edit(scope.row.id)">{{ scope.row.title }}</a>
+                                <img width="180" height="150" :src="scope.row.imgurl" alt="">
+                            </div>
+                            <router-link :to="{name: 'gcte', params: {id: scope.row.id}}">{{ scope.row.title }}</router-link>
+                            <!-- <a href="javascript:;" @click="edit(scope.row.id)">{{ scope.row.title }}</a> -->
                         </el-tooltip>
                     </template>
                 </el-table-column>
@@ -60,7 +62,7 @@
                 </el-table-column>
                 <el-table-column label="操作" width="100">
                     <template slot-scope="scope">
-                        <a href="javascript:;">修改</a>
+                        <router-link :to="{name: 'gcte', params: {id: scope.row.id}}">修改</router-link>
                     </template>
                 </el-table-column>
             </el-table>

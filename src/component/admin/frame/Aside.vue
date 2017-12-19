@@ -47,8 +47,8 @@
                         {title: "评论管理", path: "/"}
                     ]},
                     {title: "购物商城", sub: [
-                        {title: "内容管理", path: "/"},
-                        {title: "类别管理", path: "/"},
+                        {title: "内容管理", path: "/admin/goods/content/list"},
+                        {title: "类别管理", path: "/admin/goods/category/list"},
                         {title: "评论管理", path: "/"}
                     ]},
                     {title: "订单管理", sub: [
@@ -77,6 +77,12 @@
         .el-menu {
             border-right: 0;
             height: 100%;
+            li {
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
             i {
                 color: #fff;
             }
