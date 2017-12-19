@@ -14,13 +14,19 @@
     export default {
         data() {
             return {
-                user: JSON.parse(localStorage.getItem("user"))
+                user: JSON.parse(localStorage.getItem("user")) || {}
             }
         },
         methods: {
             logout() {
-                localStorage.removeItem("user");
-                this.$router.push({name: "l"});
+                this.$http.get(this.$api.logout)
+                    .then(res => {
+                        if (res.data.status == 0) {
+                            localStorage.removeItem("user");
+                            this.$router.push({name: "l"});
+                        }
+                    })
+                
             },
             handleCommand(command) {
                 this.logout();

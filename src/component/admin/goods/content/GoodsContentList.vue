@@ -16,7 +16,7 @@
             </div>
 
             <!-- 搜索框 -->
-            <el-input size="small" clearable placeholder="请输入搜索内容" prefix-icon="el-icon-search" v-model="query.searchvalue"></el-input>
+            <el-input size="small" @blur="search" clearable placeholder="请输入搜索内容" prefix-icon="el-icon-search" v-model="query.searchvalue"></el-input>
         </div>
 
         <div class="list_table">
@@ -25,9 +25,16 @@
                 border>
                 <el-table-column type="selection">
                 </el-table-column>
+                <img src="" alt="">
                 <el-table-column label="商品标题" ref="id">
                     <template slot-scope="scope">
-                        <a href="javascript:;" @click="edit(scope.row.id)">{{ scope.row.title }}</a>
+                        <el-tooltip placement="right">
+                            <div slot="content">商品货号:{{scope.row.goods_no}}<br/>
+                                交易积分:{{scope.row.point}}<br/>
+                                图片:<br/>
+                                <img width="180" height="150" :src="scope.row.imgurl" alt=""></div>
+                            <a href="javascript:;" @click="edit(scope.row.id)">{{ scope.row.title }}</a>
+                        </el-tooltip>
                     </template>
                 </el-table-column>
                 <el-table-column prop="categoryname" label="所属类别" width="100">
@@ -40,9 +47,15 @@
                 </el-table-column>
                 <el-table-column  label="属性" width="140">
                     <template slot-scope="scope">
-                        <i :class='["el-icon-picture", scope.row.is_slide ? "active" : ""]'></i>
-                        <i :class='["el-icon-upload", scope.row.is_top ? "active" : ""]'></i>
-                        <i :class='["el-icon-star-on", scope.row.is_hot ? "active" : ""]'></i>
+                        <el-tooltip class="item" effect="dark" content="轮播图" placement="bottom">
+                            <i :class='["el-icon-picture", scope.row.is_slide ? "active" : ""]'></i>
+                        </el-tooltip>
+                        <el-tooltip class="item" effect="dark" content="置顶" placement="bottom"> 
+                            <i :class='["el-icon-upload", scope.row.is_top ? "active" : ""]'></i>
+                        </el-tooltip> 
+                        <el-tooltip class="item" effect="dark" content="推荐" placement="bottom">
+                            <i :class='["el-icon-star-on", scope.row.is_hot ? "active" : ""]'></i>
+                        </el-tooltip>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作" width="100">
@@ -99,8 +112,8 @@
                 this.query.pageIndex = currentPage;
                 this.getGoodsList();
             },
-            edit(id) {
-                console.log(id);
+            search() {
+                this.getGoodsList();
             }
         },
         created() {
